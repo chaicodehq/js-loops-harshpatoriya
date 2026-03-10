@@ -36,5 +36,39 @@
  *   rangoli(3) // => ["  *", " * *", "* * *", " * *", "  *"]
  */
 export function rangoli(n) {
-  // Your code here
+  if (!Number.isInteger(n) || n <= 0) {
+    return [];
+  }
+
+  const pattern = [];
+
+  for (let row = 1; row <= n; row += 1) {
+    let line = "";
+
+    for (let space = 0; space < n - row; space += 1) {
+      line += " ";
+    }
+
+    for (let star = 0; star < row; star += 1) {
+      line += star === 0 ? "*" : " *";
+    }
+
+    pattern.push(line);
+  }
+
+  for (let row = n - 1; row >= 1; row -= 1) {
+    let line = "";
+
+    for (let space = 0; space < n - row; space += 1) {
+      line += " ";
+    }
+
+    for (let star = 0; star < row; star += 1) {
+      line += star === 0 ? "*" : " *";
+    }
+
+    pattern.push(line);
+  }
+
+  return pattern;
 }
